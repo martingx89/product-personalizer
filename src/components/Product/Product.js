@@ -9,6 +9,10 @@ const Product = (props) => {
   const [currentColor, setCurrentColor] = useState(props.colors[0]);
   const [currentSize, setCurrentSize] = useState(props.sizes[0].name);
 
+  const prepareColorClassName = (color) => {
+    return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
+  };
+
   return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
@@ -39,15 +43,14 @@ const Product = (props) => {
           <div className={styles.colors}>
             <h3 className={styles.optionLabel}>Colors</h3>
             <ul className={styles.choices}>
-              <li>
-                <button type='button' className={clsx(styles.colorBlack, styles.active)} />
-              </li>
-              <li>
-                <button type='button' className={clsx(styles.colorRed)} />
-              </li>
-              <li>
-                <button type='button' className={clsx(styles.colorWhite)} />
-              </li>
+              {props.colors.map((item) => (
+                <li key={shortid()}>
+                  <button
+                    type='button'
+                    className={clsx(prepareColorClassName(item), item === currentColor && styles.active)}
+                  />
+                </li>
+              ))}
             </ul>
           </div>
           <Button className={styles.button}>
