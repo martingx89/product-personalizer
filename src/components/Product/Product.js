@@ -5,35 +5,38 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import shortid from 'shortid';
 
-const Product = (props) => {
-  const [currentColor, setCurrentColor] = useState(props.colors[0]);
-  const [currentSize, setCurrentSize] = useState(props.sizes[0].name);
+const Product = ({ id, name, title, basePrice, colors, sizes }) => {
+  const [currentColor, setCurrentColor] = useState(colors[0]);
+  const [currentSize, setCurrentSize] = useState(sizes[0].name);
 
   const prepareColorClassName = (color) => {
     return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
   };
 
-  const getPrice = () => {};
+  const getPrice = () => {
+    const foundSize = sizes.find((size) => size.name === currentSize);
+    return basePrice + foundSize.additionalPrice;
+  };
 
   return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
         <img
           className={styles.image}
-          alt={`${props.title}`}
-          src={`${process.env.PUBLIC_URL}/images/products/shirt-${props.name}--${currentColor}.jpg`}
+          alt={`${title}`}
+          src={`${process.env.PUBLIC_URL}/images/products/shirt-${name}--${currentColor}.jpg`}
         />
       </div>
       <div>
         <header>
-          <h2 className={styles.name}>{props.title}</h2>
-          <span className={styles.price}>{props.basePrice}</span>
+          <h2 className={styles.name}>{title}</h2>
+          <span className={styles.price}>Price: {getPrice()}$</span>
         </header>
         <form>
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
-              {props.sizes.map((size) => (
+              {sizes.map((size) => (
                 <li key={shortid()}>
                   <button
                     type='button'
@@ -51,7 +54,7 @@ const Product = (props) => {
           <div className={styles.colors}>
             <h3 className={styles.optionLabel}>Colors</h3>
             <ul className={styles.choices}>
-              {props.colors.map((item) => (
+              {colors.map((item) => (
                 <li key={shortid()}>
                   <button
                     type='button'
