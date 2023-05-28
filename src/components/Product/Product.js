@@ -18,6 +18,16 @@ const Product = ({ id, name, title, basePrice, colors, sizes }) => {
     return basePrice + foundSize.additionalPrice;
   };
 
+  const addToCart = (e) => {
+    e.preventDefault();
+    console.log('Summary');
+    console.log('============');
+    console.log('Name: ', title);
+    console.log('Price: ', getPrice());
+    console.log('Size: ', currentSize);
+    console.log('Color: ', currentColor);
+  };
+
   return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
@@ -69,7 +79,12 @@ const Product = ({ id, name, title, basePrice, colors, sizes }) => {
             </ul>
           </div>
           <Button className={styles.button}>
-            <span className='fa fa-shopping-cart' />
+            <span
+              className='fa fa-shopping-cart'
+              onClick={(e) => {
+                addToCart(e);
+              }}
+            />
           </Button>
         </form>
       </div>
