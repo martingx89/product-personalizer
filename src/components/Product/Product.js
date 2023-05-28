@@ -13,6 +13,8 @@ const Product = (props) => {
     return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
   };
 
+  const getPrice = () => {};
+
   return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
@@ -33,7 +35,13 @@ const Product = (props) => {
             <ul className={styles.choices}>
               {props.sizes.map((size) => (
                 <li key={shortid()}>
-                  <button type='button' className={size.name === currentSize ? styles.active : ''}>
+                  <button
+                    type='button'
+                    className={size.name === currentSize ? styles.active : ''}
+                    onClick={() => {
+                      // console.log(size.name);
+                      setCurrentSize(size.name);
+                    }}>
                     {size.name}
                   </button>
                 </li>
@@ -48,6 +56,10 @@ const Product = (props) => {
                   <button
                     type='button'
                     className={clsx(prepareColorClassName(item), item === currentColor && styles.active)}
+                    onClick={() => {
+                      // console.log(item);
+                      setCurrentColor(item);
+                    }}
                   />
                 </li>
               ))}
