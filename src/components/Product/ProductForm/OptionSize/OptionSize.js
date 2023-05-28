@@ -1,5 +1,6 @@
 import styles from '../../Product.module.scss';
 import shortid from 'shortid';
+import PropTypes from 'prop-types';
 
 const OptionSize = ({ currentSize, sizes, setCurrentSize }) => {
   return (
@@ -21,6 +22,17 @@ const OptionSize = ({ currentSize, sizes, setCurrentSize }) => {
       </ul>
     </div>
   );
+};
+
+OptionSize.propTypes = {
+  sizes: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      additionalPrice: PropTypes.number,
+    })
+  ).isRequired,
+  currentSize: PropTypes.string.isRequired,
+  setCurrentSize: PropTypes.func.isRequired,
 };
 
 export default OptionSize;
