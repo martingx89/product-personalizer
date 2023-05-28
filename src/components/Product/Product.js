@@ -1,9 +1,10 @@
 import styles from './Product.module.scss';
 import clsx from 'clsx';
-import Button from '../Button/Button';
-import PropTypes from 'prop-types';
-import { useState } from 'react';
 import shortid from 'shortid';
+import PropTypes from 'prop-types';
+import Button from '../Button/Button';
+import ImageProduct from './ImageProduct/ImageProduct';
+import { useState } from 'react';
 
 const Product = ({ id, name, title, basePrice, colors, sizes }) => {
   const [currentColor, setCurrentColor] = useState(colors[0]);
@@ -30,13 +31,7 @@ const Product = ({ id, name, title, basePrice, colors, sizes }) => {
 
   return (
     <article className={styles.product}>
-      <div className={styles.imageContainer}>
-        <img
-          className={styles.image}
-          alt={`${title}`}
-          src={`${process.env.PUBLIC_URL}/images/products/shirt-${name}--${currentColor}.jpg`}
-        />
-      </div>
+      <ImageProduct name={name} title={title} currentColor={currentColor}></ImageProduct>
       <div>
         <header>
           <h2 className={styles.name}>{title}</h2>

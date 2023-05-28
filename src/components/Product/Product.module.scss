@@ -12,21 +12,6 @@
   position: relative;
 }
 
-.imageContainer {
-  flex: 0 0 40%;
-  width: 40%;
-  padding: 0 ($base-size * 2);
-  margin-left: -($base-size * 4);
-  margin-top: -($base-size * 3);
-  min-width: 200px;
-}
-
-.image {
-  width: 100%;
-  border-radius: $radius;
-  box-shadow: $box-shadow;
-}
-
 .name {
   margin: $base-size 0;
   font-size: $base-size * 3;
@@ -70,19 +55,19 @@
     &.colorBlack {
       background: #000;
     }
-  
+
     &.colorRed {
       background: #e74c3c;
     }
-  
+
     &.colorWhite {
       background: #fff;
     }
-  
+
     &.colorBlue {
       background: #3498db;
     }
-  
+
     &.colorGreen {
       background: #2ecc71;
     }
@@ -91,10 +76,9 @@
       margin-left: 0;
     }
   }
-
 }
 
-.sizes .choices button:hover{
+.sizes .choices button:hover {
   background: rgb(47, 53, 66);
 }
 
