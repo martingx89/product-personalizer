@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import shortid from 'shortid';
 import PropTypes from 'prop-types';
 import Button from '../Button/Button';
-import ImageProduct from './ImageProduct/ImageProduct';
+import ProductImage from './ProductImage/ProductImage';
 import { useState } from 'react';
 
 const Product = ({ id, name, title, basePrice, colors, sizes }) => {
@@ -31,7 +31,7 @@ const Product = ({ id, name, title, basePrice, colors, sizes }) => {
 
   return (
     <article className={styles.product}>
-      <ImageProduct name={name} title={title} currentColor={currentColor}></ImageProduct>
+      <ProductImage name={name} title={title} currentColor={currentColor}></ProductImage>
       <div>
         <header>
           <h2 className={styles.name}>{title}</h2>

@@ -1,7 +1,7 @@
-import styles from './ImageProduct.module.scss';
+import styles from './ProductImage.module.scss';
 import PropTypes from 'prop-types';
 
-const ImageProduct = ({ name, title, currentColor }) => {
+const ProductImage = ({ name, title, currentColor }) => {
   return (
     <div className={styles.imageContainer}>
       <img
@@ -13,4 +13,4 @@ const ImageProduct = ({ name, title, currentColor }) => {
   );
 };
 
-export default ImageProduct;
+export default ProductImage;
