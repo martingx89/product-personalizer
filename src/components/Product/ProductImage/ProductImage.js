@@ -13,4 +13,10 @@ const ProductImage = ({ name, title, currentColor }) => {
   );
 };
 
+ProductImage.propTypes = {
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  currentColor: PropTypes.string.isRequired,
+};
+
 export default ProductImage;
